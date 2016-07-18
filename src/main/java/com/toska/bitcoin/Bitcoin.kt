@@ -46,22 +46,26 @@ class ProofOfWork {
 fun main(args: Array<String>) {
 
     val ANSWER_LENGTH = 26
-    val START_WITH = "00000"
+    val START_WITH = "0000"
     val EXAMPLE_CHALLENGE = "Jas7LBFNKLWgMArTuUFUWP4HQrM"
 
     val proofOfWork = ProofOfWork()
     var found: Boolean = false
     var startTime = System.currentTimeMillis()
 
+    var iteration = 0
     while (!found) {
+        iteration++
         val answer = proofOfWork.randomString(ANSWER_LENGTH)
         var attempt = EXAMPLE_CHALLENGE + answer
         var hash = proofOfWork.getSHA256Hash(attempt)
         found = hash.startsWith(START_WITH)
         if (found) {
             var endTime = System.currentTimeMillis()
-            println("Answer (hash that starts with $START_WITH): $hash")
-            println("Right answer found in " + (endTime - startTime) + " ms")
+            println("The challenge string was $EXAMPLE_CHALLENGE and the hash of the result should starts with $START_WITH")
+            println("The answer string is: $answer and thus leads to the attemp: $attempt")
+            println("The hash of the result is $hash")
+            println("The response was found after $iteration iterations and " + (endTime - startTime) + " ms")
         }
     }
 
