@@ -7,6 +7,8 @@ import java.security.SecureRandom
 class ProofOfWork {
 
     // testing
+    // another test
+    // an another one
     private val AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
     private val rnd = SecureRandom()
